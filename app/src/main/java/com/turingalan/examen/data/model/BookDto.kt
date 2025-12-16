@@ -6,6 +6,7 @@ data class BookSearchResponse(
     @SerializedName("docs") val docs: List<BookDto>
 )
 
+//Datos Serializados
 data class BookDto(
     @SerializedName("key") val key: String,
     @SerializedName("title") val title: String,

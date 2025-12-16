@@ -22,6 +22,7 @@ class NetworkModule {
         return CoroutineScope(SupervisorJob() + Dispatchers.Default)
     }
 
+    //Base de la API
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {

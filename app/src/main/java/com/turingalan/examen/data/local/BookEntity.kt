@@ -4,6 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.turingalan.examen.data.model.Book
 
+
+//Crea la tabla books
 @Entity(tableName = "books")
 data class BookEntity(
     @PrimaryKey val id: String,
@@ -21,6 +23,7 @@ fun BookEntity.toDomain(): Book {
     )
 }
 
+//Mete los datos el authors se guarda como string pero separado por |
 fun Book.toEntity(): BookEntity {
     return BookEntity(
         id = this.id,
