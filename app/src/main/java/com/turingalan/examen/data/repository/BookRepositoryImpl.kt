@@ -1,11 +1,11 @@
 package com.turingalan.examen.data.repository
 
 import com.turingalan.examen.common.exception.BookNotFoundException
+import com.turingalan.examen.data.BookDataSource
 import com.turingalan.examen.data.local.BookDao
 import com.turingalan.examen.data.local.BookEntity
 import com.turingalan.examen.data.local.toDomain
 import com.turingalan.examen.data.model.Book
-import com.turingalan.examen.data.remote.BookApi
 import com.turingalan.examen.data.remote.getWorkId
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class BookRepositoryImpl @Inject constructor(
-    private val api: BookApi,
+    private val dataSource: BookDataSource,
     private val dao: BookDao
 ) : BookRepository {
 
@@ -28,7 +28,7 @@ class BookRepositoryImpl @Inject constructor(
 
     override suspend fun observeByQuery(search: String): Flow<Result<List<Book>>> = flow {
         try {
-            val response = api.searchBooks(search)
+            val response = dataSource.searchBooks(search)
             val entities = response.docs.map { dto ->
                 BookEntity(
                     id = getWorkId(dto.key),
