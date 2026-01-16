@@ -72,7 +72,8 @@ app/
 
 - **Android Studio** Hedgehog (2023.1.1) o superior
 - **JDK 11** o superior
-- **Android SDK** con nivel mínimo de API 34
+- **Android SDK** con nivel mínimo de API 34 (Android 14)
+  - *Nota: El proyecto utiliza API 34 debido a las características modernas de Jetpack Compose y Material Design 3. Para mayor compatibilidad, se puede reducir el minSdk en `app/build.gradle.kts` a API 24 o superior.*
 - **Gradle 8.1+**
 - Conexión a Internet (para búsqueda de libros)
 
@@ -208,8 +209,10 @@ Las contribuciones son bienvenidas. Para contribuir:
 
 ## 🐛 Problemas Conocidos
 
-- La aplicación requiere API 34+ (Android 14+)
+- La aplicación requiere API 34+ (Android 14+) por defecto
+  - *Solución: Para mayor compatibilidad, reducir `minSdk` en `app/build.gradle.kts` a API 24 o superior*
 - Se necesita conexión a Internet para búsquedas en tiempo real
+- El cacheo offline está implementado pero requiere una búsqueda inicial con conexión
 
 ## 📄 Licencia
 
